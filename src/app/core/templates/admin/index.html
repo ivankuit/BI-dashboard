@@ -1,0 +1,44 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<div id="content-main">
+    {% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
+
+    <!-- Custom Analytics Section -->
+    <div class="module" style="margin-top: 20px;">
+        <table style="width: 100%;">
+            <caption>
+                <div class="text" style="display: flex; align-items: center; justify-content: space-between;">
+                    <span>Analytics & Reports</span>
+                </div>
+            </caption>
+            <tbody>
+                <tr class="model-account">
+                    <th scope="row">
+                        <a href="{% url 'admin:account_summary_analytics' %}" style="text-decoration: none;">
+                             Account Summary Analytics
+                        </a>
+                    </th>
+                    <td style="padding-left: 20px; color: #666;">
+                        Generate detailed account transaction reports with metrics and insights
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .module caption {
+        background: #417690;
+        color: white;
+        padding: 10px;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .module tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+</style>
+{% endblock %}
