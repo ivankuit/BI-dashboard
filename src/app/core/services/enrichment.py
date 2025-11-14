@@ -41,7 +41,7 @@ class TransactionEnrichmentService:
         Returns:
             Category name as a string (lowercase)
         """
-        # Prioritize merchant_name over description
+
         text_to_categorize = merchant_name or description or ""
 
         if not text_to_categorize.strip():

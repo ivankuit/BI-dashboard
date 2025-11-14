@@ -22,8 +22,10 @@ makemigrations:
 	docker compose exec django python manage.py makemigrations
 
 setup:
+	$(MAKE) migrate
 	docker compose exec django python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); u, created = User.objects.get_or_create(username='admin', defaults={'email': 'admin@example.com', 'is_staff': True, 'is_superuser': True}); u.set_password('12345'); u.save(); print(f'Admin user {\"created\" if created else \"updated\"}')"
-#	$(MAKE) migrate
+	docker compose exec django python manage.py seed_categories
+	docker compose exec django python manage.py generate_data
 
 
 
